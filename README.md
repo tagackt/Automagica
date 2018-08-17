@@ -9,7 +9,7 @@ Refer to our [website](https://www.automagica.be) for more information, register
 ## Getting started
 
 ### Prerequisites
-1. Python 3.6.5 from https://www.python.org
+1. Python 3.7 from https://www.python.org
 
 ### Installation instructions
 Install Automagica on the bot host machine:
