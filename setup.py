@@ -29,8 +29,7 @@ setup(name='Automagica',
           'pywin32==223',
           'PyPDF2==1.26.0',
           'psutil==5.4.6',
-          'beautifulsoup4==4.6.0',
-          'psutil==5.4.6'
+          'beautifulsoup4==4.6.0'
       ],
       include_package_data = True
 )
