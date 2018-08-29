@@ -10,9 +10,8 @@ new_document = ReplaceText(document, text='[template]', replace_with='invoice 12
 
 new_document.save('result.docx')
 
-
 """
-Opens the new file and saves it as PDF (all in the background)
+Opens the new file and saves it as PDF (all in the background).
 This only works on Windows with Microsoft Office installed!
 """
 
