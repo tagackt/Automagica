@@ -123,7 +123,6 @@ nla google.nla
 nla wikipedia.nla
 nla youtube.nla
 ```
-
 We are quickly expanding the Natural Language Understanding features of this part of Automagica to make automation accessible to all!
 
 ## Important notes
