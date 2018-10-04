@@ -99,7 +99,7 @@ For a step-to-step tutorial on how to install and configure Python see [this vid
 For a step-to-step tutorial on how to build and run a Python script see [this video](https://www.youtube.com/watch?v=hFhiV5X5QM4).
 
 ## Prerequisites
-- Python 3.6.4 from [www.python.org](https://www.python.org)
+- Python 3.7 from [www.python.org](https://www.python.org)
 
 ## Installation instructions
 Install Automagica on the bot host machine:
