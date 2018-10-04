@@ -908,15 +908,14 @@ def FileExists(path):
     return os.path.isfile(path)
 
 
-def CopyFile(old_path,new_location):
+def CopyFile(old_path,new_path):
     '''
     By entering "C:\\Users\\Documents\\Automagica.docx" as old_path and "C:\\Users\\Downloads" as new_location...
     the function copies the file "Automagica.docx" to the new location. If the new location already contains a file
     with the same name, the copy will replace this file.
     '''
-    if os.path.isfile(old_path):
-        if os.path.isdir(new_location):
-            shutil.copy(old_path,new_location)
+    from shutil import copyfile
+    copyfile(old_path,new_path)
 
 
 def WaitForFile(path):
