@@ -56,7 +56,7 @@ from automagica import *
 browser = ChromeBrowser()
 browser.get('https://google.com')
 # Enter Search Text
-browser.find_element_by_xpath('//*[@id="lst-ib"]').send_keys('KPMG')
+browser.find_element_by_xpath('//*[@id="lst-ib"]').send_keys('SEARCHTERM')
 # Submit
 browser.find_element_by_xpath('//*[@id="lst-ib"]').submit()
 # Click on the first result
@@ -83,7 +83,7 @@ Make a list of all KPMG Advisory Employees
 from automagica import *
 
 browser = ChromeBrowser()
-browser.get('https://home.kpmg.com/be/nl/home/misc/search.html')
+browser.get(URL)
 
 # Klik op Mensen in linker menu
 browser.find_element_by_xpath('//*[@id="page-content"]/section/div/div/div/section/div[3]/div[1]/div[1]/div/div/ul/li[4]/a/span[2]').click()
@@ -101,7 +101,7 @@ for person in persons:
     names.append(name)
 
 # Schijf weg naar file
-WriteListToFile(names, file="KpmgEmployees.txt")
+WriteListToFile(names, file="results.txt")
 
 
 """
