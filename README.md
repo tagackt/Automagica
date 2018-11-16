@@ -23,6 +23,9 @@ Before getting started, don't forget to import the activities from automagica in
 ```
 from automagica import *
 ```
+### Support
+
+Automagica officially supports Windows 10. Linux and MacOS are not officially supported.
 
 ## Examples
 
