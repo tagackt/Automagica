@@ -1323,4 +1323,32 @@ def OpenXPSViewer():
     subprocess.Popen("xpsrchvw")
     return    
 
+'''
+Portal activities
+'''
 
+def AutomagicaReport(data, headers=True):
+    '''
+    Function to report in the Automagica Portal. Can be used to generate reports, logs and worklists. Only available to users with access to the Portal. 
+    Only accepts lists of dictionaries as data.
+    :param bool input_type: Headers for report, if True will take dictionary keys or as header
+    '''   
+
+    data_keys = []
+    for row in data:
+        for key, value in row.items():
+            if key not in data_keys:
+                data_keys.append(key)
+
+    if headers:
+        header = '|'.join(data_keys)
+
+        header_next = '|'.join(['---' for key in data_keys])
+
+        print('AUTOMAGICA_MARKDOWN: ' + str(header))
+        print('AUTOMAGICA_MARKDOWN: ' + str(header_next))
+
+    for item in data:
+        print('AUTOMAGICA_MARKDOWN: ' + '|'.join([str(item.get(key,'')) for key in data_keys]))
+
+    return
