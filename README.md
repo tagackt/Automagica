@@ -293,5 +293,6 @@ Under the hood, Automagica is built on some of the greatest open source librarie
 - [pywin32](https://github.com/mhammond/pywin32)
 - [PyPDF2](https://github.com/mstamy2/PyPDF2)
 - [Psutil](https://pypi.org/project/psutil/)
+- [py-trello](https://github.com/sarumont/py-trello)
 
 A special thanks goes out to all the above-mentioned repository contributers! :heart:

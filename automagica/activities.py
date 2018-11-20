@@ -10,6 +10,7 @@ import pyautogui
 Delay activities
 '''
 
+
 def Wait(seconds=None):
     '''
     Stall the execution of the preceding functions for a specified number of seconds.
@@ -21,13 +22,14 @@ def Wait(seconds=None):
 Keyboard/mouse activities
 '''
 
+
 def GetMouseCoordinates():
     '''
     Displays a message box with the absolute coordinates of the current position of the mouse.
     '''
     coord = pyautogui.position()
     coordstring = "( " + str(coord[0]) + " , " + str(coord[1]) + " )"
-    return DisplayMessageBox(coordstring,"Mouse Position")
+    return DisplayMessageBox(coordstring, "Mouse Position")
 
 
 def ClickOnPosition(x=None, y=None):
@@ -91,14 +93,14 @@ def PressKey(key=None):
         return pyautogui.press(key)
 
 
-def PressHotkey(first_key,second_key,third_key=None):
+def PressHotkey(first_key, second_key, third_key=None):
     '''
     Press a combination of two or three keys simultaneously.
     '''
     if not third_key:
-        return pyautogui.hotkey(first_key,second_key)
+        return pyautogui.hotkey(first_key, second_key)
     if third_key:
-        return pyautogui.hotkey(first_key,second_key,third_key)
+        return pyautogui.hotkey(first_key, second_key, third_key)
 
 
 def Type(text=None, interval_seconds=0.001):
@@ -196,6 +198,7 @@ def TypeInRunWindow(text=None):
 Monitoring
 '''
 
+
 def CPULoad(measure_time=1):
     '''
     Returns average CPU load for all cores.
@@ -274,6 +277,7 @@ def TimeSinceLastBoot():
 Windows activities
 '''
 
+
 def BeepSound(frequency=1000, duration=250):
     '''
     Makes a beeping sound.
@@ -299,9 +303,11 @@ def ClearClipboard():
         windll.user32.CloseClipboard()
     return
 
+
 '''
 Process activities
 '''
+
 
 def ProcessRunning(name):
     '''
@@ -328,7 +334,7 @@ def ListRunningProcesses():
 def ChromeRunning():
     '''
     Returns True is Chrome is running.
-    '''    
+    '''
     for p in psutil.process_iter():
         if "chrome.exe" in p.name():
             return True
@@ -338,7 +344,7 @@ def ChromeRunning():
 def WordRunning():
     '''
     Returns True is Word is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "winword.exe" in p.name().lower():
             return True
@@ -348,7 +354,7 @@ def WordRunning():
 def ExcelRunning():
     '''
     Returns True is Excel is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "excel.exe" in p.name():
             return True
@@ -358,7 +364,7 @@ def ExcelRunning():
 def PowerpointRunning():
     '''
     Returns True is Powerpoint is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "powerpnt.exe" in p.name().lower:
             return True
@@ -368,7 +374,7 @@ def PowerpointRunning():
 def DropboxRunning():
     '''
     Returns True is Dropbox is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "dropbox.exe" in p.name().lower():
             return True
@@ -378,7 +384,7 @@ def DropboxRunning():
 def FirefoxRunning():
     '''
     Returns True is Firefox is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "firefox.exe" in p.name().lower():
             return True
@@ -388,7 +394,7 @@ def FirefoxRunning():
 def TeamviewerRunning():
     '''
     Returns True is Teamviewer is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "teamviewer.exe" in p.name().lower():
             return True
@@ -398,7 +404,7 @@ def TeamviewerRunning():
 def SkypeRunning():
     '''
     Returns True is Skype is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "skypehost.exe" in p.name().lower():
             return True
@@ -408,7 +414,7 @@ def SkypeRunning():
 def EdgeRunning():
     '''
     Returns True is Microsoft Edge is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "microsoftedge.exe" in p.name().lower():
             return True
@@ -418,7 +424,7 @@ def EdgeRunning():
 def OnedriveRunning():
     '''
     Returns True is Onedrive is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "onedrive.exe" in p.name().lower():
             return True
@@ -428,7 +434,7 @@ def OnedriveRunning():
 def IllustratorRunning():
     '''
     Returns True is Illustrator is running.
-    '''     
+    '''
     for p in psutil.process_iter():
         if "illustrator.exe" in p.name().lower():
             return True
@@ -441,7 +447,7 @@ def LaunchProcess(process_executable=None):
     return Popen(process_executable)
 
 
-def OpenProgramByName(name, main_drive = "C:\\"):
+def OpenProgramByName(name, main_drive="C:\\"):
     from subprocess import Popen
 
     if not name[-4:] == ".exe":
@@ -465,6 +471,7 @@ def KillProcess(process=None, name=None):
 Browser activities
 '''
 
+
 def ChromeBrowser():
     if platform.system() == 'Linux':
         chromedriver_path = '\\bin\\webdriver\\linux64\\chromedriver'
@@ -484,10 +491,11 @@ def GetGoogleSearchLinks(search_text):
     import urllib
     import requests
     from bs4 import BeautifulSoup
-    r = requests.get('https://www.google.com/search?&q=' + urllib.parse.quote_plus(search_text))
-    soup = BeautifulSoup(r.content,"html.parser")
+    r = requests.get('https://www.google.com/search?&q=' +
+                     urllib.parse.quote_plus(search_text))
+    soup = BeautifulSoup(r.content, "html.parser")
     links = []
-    for block in soup.findAll('h3', {'class':'r'}):
+    for block in soup.findAll('h3', {'class': 'r'}):
         link = block.a.get('href').split("?q=")[1].split("&sa=U")[0]
         if 'https' in link:
             links.append(link)
@@ -497,6 +505,7 @@ def GetGoogleSearchLinks(search_text):
 ''' 
 OCR activities 
 '''
+
 
 def ExtractTextFromImage(filename=None):
     if platform.system == 'Windows':
@@ -553,7 +562,7 @@ def ExcelSaveExistingWorkbook(path, new_path=None):
     if not new_path:
         workbook.save(path)
     elif not os.path.isfile(new_path):
-        workbook.save(new_path)    
+        workbook.save(new_path)
     return
 
 
@@ -567,7 +576,7 @@ def ExcelCreateWorkSheet(path, sheet_name=None):
     '''
     workbook = load_workbook(path)
     if sheet_name and sheet_name not in workbook.get_sheet_names():
-        workbook.create_sheet(title = sheet_name)
+        workbook.create_sheet(title=sheet_name)
     elif not sheet_name:
         workbook.create_sheet()
     workbook.save(path)
@@ -614,8 +623,8 @@ def ExcelReadRowCol(path, r=1, c=1, sheet=None):
         worksheet = workbook.get_sheet_by_name(sheet)
     else:
         worksheet = workbook.active
-    
-    return worksheet.cell(row=r, column = c).value
+
+    return worksheet.cell(row=r, column=c).value
 
 
 def ExcelWriteRowCol(path, sheet=None, r=1, c=1, write_value='Value'):
@@ -672,11 +681,11 @@ def ExcelPutRowInList(path, start_cell, end_cell, sheet=None):
         worksheet = workbook.get_sheet_by_name(sheet)
     else:
         worksheet = workbook.active
-    
+
     values = []
     for rowobj in worksheet[start_cell:end_cell][0]:
         values.append(rowobj.value)
-    
+
     return values
 
 
@@ -696,11 +705,11 @@ def ExcelPutColumnInList(path, start_cell, end_cell, sheet=None):
         worksheet = workbook.get_sheet_by_name(sheet)
     else:
         worksheet = workbook.active
-    
+
     values = []
     for colobj in worksheet[start_cell:end_cell]:
         values.append(colobj[0].value)
-    
+
     return values
 
 
@@ -719,7 +728,7 @@ def ExcelPutSelectionInMatrix(path, upper_left_cell, bottom_right_cell, sheet=No
         worksheet = workbook.get_sheet_by_name(sheet)
     else:
         worksheet = workbook.active
-    
+
     matrix = []
     for rowobj in worksheet[upper_left_cell:bottom_right_cell]:
         next_row = []
@@ -733,6 +742,7 @@ def ExcelPutSelectionInMatrix(path, upper_left_cell, bottom_right_cell, sheet=No
 '''
 Word activities
 '''
+
 
 def OpenWordDocument(filename=None):
     from docx import Document
@@ -763,7 +773,7 @@ PDF Activities
 import PyPDF2
 
 
-def MergePDF(pdf1,pdf2,merged_path):
+def MergePDF(pdf1, pdf2, merged_path):
     '''
     The first two arguments are the PDF's that need to be merged, entered as a path. The pages from pdf2 
     will be added to pdf2. The merged PDF receives a new path specefied by the third argument.
@@ -800,6 +810,7 @@ def ExtractTextFromPDFPage(path, page=1):
 Message boxes
 '''
 
+
 def DisplayMessageBox(body, title="Message", type="info"):
     '''
     Shows a pop-up message with title and body. Three possible types, info, error and warning with the default value info.
@@ -810,16 +821,16 @@ def DisplayMessageBox(body, title="Message", type="info"):
     # hide main window
     root = tkinter.Tk()
     root.withdraw()
-    
+
     if not body:
-         messagebox.showwarning("Warning","No input for message box")
-      
+        messagebox.showwarning("Warning", "No input for message box")
+
     if type == "error":
-        messagebox.showwarning(title,body)
+        messagebox.showwarning(title, body)
     if type == "warning":
-        messagebox.showwarning(title,body)
+        messagebox.showwarning(title, body)
     if type == "info":
-        messagebox.showinfo(title,body)
+        messagebox.showinfo(title, body)
     return
 
 
@@ -831,7 +842,7 @@ def RequestUserInput():
     from tkinter.simpledialog import askstring
 
     root = Tk()
-    root.withdraw() # hide main window
+    root.withdraw()  # hide main window
 
     text = askstring("Input", "Give input:")
     return text
@@ -839,13 +850,14 @@ def RequestUserInput():
 
 def StartFile(path):
     from os import startfile
-    startfile(path) 
+    startfile(path)
     return
 
 
 '''
 File Operations
 '''
+
 
 def OpenFile(path):
     '''
@@ -856,7 +868,7 @@ def OpenFile(path):
     return
 
 
-def RenameFile(old_path,new_file_name):
+def RenameFile(old_path, new_file_name):
     '''
     Entering "C:\\Users\\Documents\\Automagica.docx" as "old_path" and "Automagica123.docx" as new_file_name changes
     the name of the directory in C:\\Users\\Documents from Automagica to Automagica123. The function will not
@@ -866,11 +878,11 @@ def RenameFile(old_path,new_file_name):
         base_path = old_path.split("\\")[:-1]
         new_path = "\\".join(base_path)+"\\" + new_file_name
         if not os.path.exists(new_path):
-            os.rename(old_path,new_path)
+            os.rename(old_path, new_path)
     return
 
 
-def MoveFile(old_path,new_location):
+def MoveFile(old_path, new_location):
     '''
     Entering "C:\\Users\\Documents\\Automagica.docx" as old_path and "C:\\Users\\Downloads"
     as new_location moves the file Automagica.docx from directory "Documents" to directory "Downloads".
@@ -878,14 +890,15 @@ def MoveFile(old_path,new_location):
     in front of the name before the file is moved.
     '''
     import uuid
-    name=old_path.split("\\")[-1]
-    new_path=new_location + "\\" + name
+    name = old_path.split("\\")[-1]
+    new_path = new_location + "\\" + name
     if os.path.exists(old_path):
         if not os.path.exists(new_path):
-            os.rename(old_path,new_path)
+            os.rename(old_path, new_path)
         elif os.path.exists(new_path):
-            new_path = new_location + "\\" + "(" + str(uuid.uuid4())[:8] + ") " + name
-            os.rename(old_path,new_path)
+            new_path = new_location + "\\" + \
+                "(" + str(uuid.uuid4())[:8] + ") " + name
+            os.rename(old_path, new_path)
     return
 
 
@@ -908,14 +921,14 @@ def FileExists(path):
     return os.path.isfile(path)
 
 
-def CopyFile(old_path,new_path):
+def CopyFile(old_path, new_path):
     '''
     By entering "C:\\Users\\Documents\\Automagica.docx" as old_path and "C:\\Users\\Downloads" as new_location...
     the function copies the file "Automagica.docx" to the new location. If the new location already contains a file
     with the same name, the copy will replace this file.
     '''
     from shutil import copyfile
-    copyfile(old_path,new_path)
+    copyfile(old_path, new_path)
 
 
 def WaitForFile(path):
@@ -935,7 +948,7 @@ def WriteListToFile(list_to_write, file):
     yet, the function will create a new .txt file at the specified path and write it. If the 
     path does exist, the function writes the list in the existing file.
     '''
-    with open(file, 'w') as filehandle:  
+    with open(file, 'w') as filehandle:
         filehandle.writelines("%s\n" % place for place in list_to_write)
     return
 
@@ -947,7 +960,7 @@ def WriteFileToList(file):
     not work if the entered path is not attached to a .txt file.
     '''
     written_list = []
-    with open(file, 'r') as filehandle:  
+    with open(file, 'r') as filehandle:
         filecontents = filehandle.readlines()
         for line in filecontents:
             current_place = line[:-1]
@@ -958,6 +971,7 @@ def WriteFileToList(file):
 '''
 Folder Operations
 '''
+
 
 def CreateFolder(path):
     '''
@@ -977,7 +991,7 @@ def RenameFolder(old_path, new_folder_name):
         base_path = old_path.split("\\")[:-1]
         new_path = "\\".join(base_path)+"\\" + new_folder_name
         if not os.path.exists(new_path):
-            os.rename(old_path,new_path)
+            os.rename(old_path, new_path)
     return
 
 
@@ -997,14 +1011,14 @@ def MoveFolder(old_path, new_location):
     If the new location already contains a folder with the same name, a random 8 character uid is added to the name.
     '''
     import uuid
-    name=old_path.split("\\")[-1]
-    new_path=new_location + "\\" + name
+    name = old_path.split("\\")[-1]
+    new_path = new_location + "\\" + name
     if os.path.isdir(old_path):
         if not os.path.isdir(new_path):
-            os.rename(old_path,new_path)
+            os.rename(old_path, new_path)
         elif os.path.isdir(new_path):
             new_path = new_path + " (" + str(uuid.uuid4())[:8] + ")"
-            os.rename(old_path,new_path)
+            os.rename(old_path, new_path)
     return
 
 
@@ -1022,7 +1036,7 @@ def RemoveFolder(path, allow_root=False, delete_read_only=True):
     return
 
 
-def EmptyFolder(path, allow_root = False):
+def EmptyFolder(path, allow_root=False):
     '''
     Entering "C:\\Users\\Documents\\Automagica" removes all the files and folders saved in the "Automagica" folder but maintains the folder itself.
     Standard, the safety variable allow_root is False. When False the function checks whether the path lenght has a minimum of 10 characters. 
@@ -1049,35 +1063,35 @@ def FolderExists(path):
     return os.path.isdir(path)
 
 
-def CopyFolder(old_path,new_location):
+def CopyFolder(old_path, new_location):
     '''
     By entering "C:\\Users\\Documents\\Automagica" as old_path and "C:\\Users\\Downloads" as new_location...
     the function copies the folder "Automagica" together with all its contents to the new location. The folder name...
     remains unchanged, except when the folder already exists a 8 character random uid will be added to the name.
     '''
     import uuid
-    new_path=new_location + "\\" + old_path.split("\\")[-1]
+    new_path = new_location + "\\" + old_path.split("\\")[-1]
     if os.path.isdir(old_path):
         if not os.path.isdir(new_path):
-            shutil.copytree(old_path,new_path)
+            shutil.copytree(old_path, new_path)
         elif os.path.isdir(new_path):
             if os.path.isdir(new_path):
                 new_path = new_path + " (" + str(uuid.uuid4())[:8] + ")"
-            shutil.copytree(old_path,new_path)
+            shutil.copytree(old_path, new_path)
     return
 
 
-def ZipFolder(dir_path,new_path):
+def ZipFolder(dir_path, new_path):
     '''
     Creates a zipped directory of a directory specified by the first argument. The newly zipped directory 
     receives a path specified by the second argument.
     '''
     if os.path.isdir(dir_path):
-        shutil.make_archive(new_path,'zip',dir_path)
+        shutil.make_archive(new_path, 'zip', dir_path)
     return
 
 
-def UnzipFolder(path,new_path=False):
+def UnzipFolder(path, new_path=False):
     '''
     Unzips a folder specified by the first variable. The unzipped folder will be stored in a directory specified by
     new_path. If this second variable is omitted, the unzipped folder will be stored in the same directory as the 
@@ -1126,12 +1140,12 @@ def RotateImage(path, angle):
     '''
     Entering "C:\\Users\\Pictures\\Automagica.jpg" as path and an a angle of 90 rotates the picture specified by the first
     argument over 90 degrees. Pay attention, because angles other than 90, 180, 270, 360 can resize the picture. 
-    ''' 
+    '''
     im = Image.open(path)
     return im.rotate(angle, expand=True).save(path)
 
 
-def ResizeImage(path,size):
+def ResizeImage(path, size):
     '''
     Resizes the image specified by the path variable. The size is specifie by the second argument. This is a tuple with the
     width and height in pixels. E.g. ResizeImage("C:\\Users\\Pictures\\Automagica.jpg", (300, 400)) gives the image a width
@@ -1146,7 +1160,7 @@ def ImageSize(path):
     Returns the size in pixels of an image specified by a path. The size is returned in a message box
     of the form: "(height, width)"
     '''
-    
+
     im = Image.open(path)
     return DisplayMessageBox(str(im.size))
 
@@ -1159,14 +1173,14 @@ def CropImage(path, box=None):
     im = Image.open(path)
     return im.crop(box).save(path)
 
-    
+
 def ImageFormat(path):
     '''
     Returns the format of an image specified by the input path. E.g. entering "C:\\Users\\Pictures\\Automagica.jpg"
     returns a message box saying JPEG.
     '''
     im = Image.open(path)
-    return DisplayMessageBox(im.format) 
+    return DisplayMessageBox(im.format)
 
 
 def MirrorImageHorizontally(path):
@@ -1199,14 +1213,15 @@ def SendMail(host, user, password, destination, subject="", message="", port=587
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     '''
-    BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' % user,'Subject: %s' % subject,'', message])
+    BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' %
+                        user, 'Subject: %s' % subject, '', message])
     smtpObj = smtplib.SMTP(host, port)
     smtpObj.ehlo()
     smtpObj.starttls()
     smtpObj.login(user, password)
     smtpObj.sendmail(user, destination, BODY)
     smtpObj.quit()
-    return    
+    return
 
 
 def SendMailWithHotmail(user, password, destination, subject="", message="", port=587):
@@ -1216,7 +1231,8 @@ def SendMailWithHotmail(user, password, destination, subject="", message="", por
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     '''
-    SendMail('smtp-mail.outlook.com', user, password, destination, subject, message, port)
+    SendMail('smtp-mail.outlook.com', user, password,
+             destination, subject, message, port)
     return
 
 
@@ -1229,7 +1245,8 @@ def SendMailWithGmail(user, password, destination, subject="", message="", port=
     safety feature that blocks lessecure apps. For this function to work properly, this needs to be turned off, which
     can be done at the following link: https://myaccount.google.com/lesssecureapps. 
     '''
-    SendMail('smtp.gmail.com', user, password, destination, subject, message, port)
+    SendMail('smtp.gmail.com', user, password,
+             destination, subject, message, port)
     return
 
 
@@ -1240,7 +1257,8 @@ def SendMailWithYahoo(user, password, destination, subject="", message="", port=
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     '''
-    SendMail('smtp.mail.yahoo.com', user, password, destination, subject, message, port)
+    SendMail('smtp.mail.yahoo.com', user, password,
+             destination, subject, message, port)
     return
 
 
@@ -1320,12 +1338,14 @@ def OpenXPSViewer():
     Open Windows XPS Viewer.
     '''
     subprocess.Popen("xpsrchvw")
-    return    
+    return
 
 
 '''
 Portal (premium) activities
 '''
+
+
 def InsertReportTable(data):
     '''
     Function to report in the Automagica Portal. Can be used to generate reports, 
@@ -1347,12 +1367,54 @@ def InsertReportTable(data):
     print('AUTOMAGICA_MARKDOWN: ' + str(header_next))
 
     for item in data:
-        print('AUTOMAGICA_MARKDOWN: ' + '|'.join([str(item.get(key,'')) for key in data_keys]))
+        print('AUTOMAGICA_MARKDOWN: ' +
+              '|'.join([str(item.get(key, '')) for key in data_keys]))
 
-def InsertReportTitle(title=None, level=1):
+
+def InsertReportTitle(title='My title', level=1):
     '''
     Function to insert a report title in the Automagica Portal.
     This outputs a string as a title to the console.
     '''
-    print('AUTOMAGICA_MARKDOWN: '+ '#' * level)
+    print('AUTOMAGICA_MARKDOWN: ' + '#' * level)
 
+
+'''
+Trello activities
+'''
+
+
+def MakeTrelloCard(title='My card',
+                   description='My description',
+                   board_name='My board',
+                   list_name='My list',
+                   api_key='',
+                   api_secret='',
+                   token='',
+                   token_secret='any'):
+    """
+    For this you need a Trello API key, secret and token. 
+    Token secret can be any string, but should be altered for security purposes.
+    """
+    from trello import TrelloClient
+
+    client = TrelloClient(
+        api_key=api_key,
+        api_secret=api_secret,
+        token=token,
+        token_secret=token_secret
+    )
+
+    trello_boards = client.list_boards()
+    for trello_board in trello_boards:
+        if trello_board.name == board_name:
+            target_board = trello_board
+            break
+
+    trello_lists = target_board.all_lists()
+    for trello_list in trello_lists:
+        if trello_list.name == list_name:
+            target_list = trello_list
+            break
+
+    target_list.add_card(title, desc=description)
