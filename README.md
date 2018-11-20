@@ -1,10 +1,13 @@
 ![](https://github.com/OakwoodAI/automagica/blob/master/images/logo.png)
-# Automagica Client
+# Automagica
 Automagica is an open source Smart Robotic Process Automation (SRPA) platform. With Automagica, automating cross-platform processes becomes a breeze. With this open source library we want to provide a comprehensive and consistent wrapper around known and lesser known automation libraries .
 
 ![](https://github.com/OakwoodAI/automagica/blob/master/images/automagica_drawing.gif)
 
 Refer to our [website](https://www.automagica.be) for more information, registered users can acces the [portal](https://portal.automagica.be). For more info see the [documentation](https://automagica.readthedocs.io).
+
+## Need expert support?
+We can support you end-to-end in all your automation needs, from estimating automation potential for processes to technical implementation and integration. Send an e-mail to [sales@automagica.be](mailto:sales@automagica.be) for enquiries and rates.
 
 ## Getting started
 
