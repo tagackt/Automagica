@@ -782,10 +782,10 @@ def MergePDF(pdf1,pdf2,merged_path):
 
 
 def ExtractTextFromPDFPage(path, page=1):
-    """
+    '''
     This function extracts all the text from a given page and returns it as a string. The pdf needs to be
     entered as a path. Pay attention that the entered page needs to be greater than 0.
-    """
+    '''
     if os.path.isfile(path) and page > 0:
         pdfFile = open(path, "rb")
         pdfReader = PyPDF2.PdfFileReader(pdfFile)
@@ -1193,12 +1193,12 @@ import smtplib
 
 
 def SendMail(host, user, password, destination, subject="", message="", port=587):
-    """
+    '''
     This function lets you send emails with a hotmail address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
-    """
+    '''
     BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' % user,'Subject: %s' % subject,'', message])
     smtpObj = smtplib.SMTP(host, port)
     smtpObj.ehlo()
@@ -1210,36 +1210,36 @@ def SendMail(host, user, password, destination, subject="", message="", port=587
 
 
 def SendMailWithHotmail(user, password, destination, subject="", message="", port=587):
-    """
+    '''
     This function lets you send emails with a hotmail address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
-    """
+    '''
     SendMail('smtp-mail.outlook.com', user, password, destination, subject, message, port)
     return
 
 
 def SendMailWithGmail(user, password, destination, subject="", message="", port=587):
-    """
+    '''
     This function lets you send emails with a gmail address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465. Google has a 
     safety feature that blocks lessecure apps. For this function to work properly, this needs to be turned off, which
     can be done at the following link: https://myaccount.google.com/lesssecureapps. 
-    """
+    '''
     SendMail('smtp.gmail.com', user, password, destination, subject, message, port)
     return
 
 
 def SendMailWithYahoo(user, password, destination, subject="", message="", port=587):
-    """
+    '''
     This function lets you send emails with a Yahoo address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
-    """
+    '''
     SendMail('smtp.mail.yahoo.com', user, password, destination, subject, message, port)
     return
 
@@ -1252,73 +1252,73 @@ import subprocess
 
 
 def OpenCalculator():
-    """
+    '''
     Open Calculator.
-    """
+    '''
     subprocess.Popen("calc.exe")
     return
 
 
 def OpenPaint():
-    """
+    '''
     Open MS Paint.
-    """
+    '''
     subprocess.Popen("mspaint.exe")
     return
 
 
 def OpenNotepad():
-    """
+    '''
     Open Notepad
-    """
+    '''
     subprocess.Popen("notepad.exe")
     return
 
 
 def OpenSnippingTool():
-    """
+    '''
     Open Snipping Tool.
-    """
+    '''
     subprocess.Popen("SnippingTool.exe")
     return
 
 
 def OpenControlPanel():
-    """
+    '''
     Open Windows Control Panel.
-    """
+    '''
     subprocess.Popen("control.exe")
     return
 
 
 def OpenCleanManager():
-    """
+    '''
     Open Clean Manager.
-    """
+    '''
     subprocess.Popen("cleanmgr.exe")
     return
 
 
 def OpenDialer():
-    """
+    '''
     Open Windows Dialer.
-    """
+    '''
     subprocess.Popen("dialer.exe")
     return
 
 
 def OpenVolumeMixer():
-    """
+    '''
     Open Windows Volume Mixer.
-    """
+    '''
     subprocess.Popen("SndVol.exe")
     return
 
 
 def OpenXPSViewer():
-    """
+    '''
     Open Windows XPS Viewer.
-    """
+    '''
     subprocess.Popen("xpsrchvw")
     return    
 
@@ -1327,11 +1327,11 @@ def OpenXPSViewer():
 Portal (premium) activities
 '''
 def InsertReportTable(data):
-    """
+    '''
     Function to report in the Automagica Portal. Can be used to generate reports, 
     logs and worklists. Only available to users with access to the Portal. 
     This outputs a list of flat dicts to a markdown table with headers to the console.
-    """
+    '''
     data_keys = []
 
     for row in data:
@@ -1350,9 +1350,9 @@ def InsertReportTable(data):
         print('AUTOMAGICA_MARKDOWN: ' + '|'.join([str(item.get(key,'')) for key in data_keys]))
 
 def InsertReportTitle(title=None, level=1):
-    """
+    '''
     Function to insert a report title in the Automagica Portal.
     This outputs a string as a title to the console.
-    """
+    '''
     print('AUTOMAGICA_MARKDOWN: '+ '#' * level)
 
