@@ -1192,56 +1192,55 @@ Email Operations
 import smtplib
 
 
-def SendMailWithHotmail(user, password, destination, subject="", message="", port=587):
+def SendMail(host, user, password, destination, subject="", message="", port=587):
     """
-    This function lest you send emails with a hotmail address. The first and second arguments require the
+    This function lets you send emails with a hotmail address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     """
     BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' % user,'Subject: %s' % subject,'', message])
-    smtpObj = smtplib.SMTP('smtp-mail.outlook.com', port)
+    smtpObj = smtplib.SMTP(host, port)
     smtpObj.ehlo()
     smtpObj.starttls()
     smtpObj.login(user, password)
     smtpObj.sendmail(user, destination, BODY)
     smtpObj.quit()
+    return    
+
+
+def SendMailWithHotmail(user, password, destination, subject="", message="", port=587):
+    """
+    This function lets you send emails with a hotmail address. The first and second arguments require the
+    mail address and password of your hotmail account. The destination is the receiving mail address. The subject
+    and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
+    587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
+    """
+    SendMail('smtp-mail.outlook.com', user, password, destination, subject, message, port)
     return
 
 
 def SendMailWithGmail(user, password, destination, subject="", message="", port=587):
     """
-    This function lest you send emails with a gmail address. The first and second arguments require the
+    This function lets you send emails with a gmail address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465. Google has a 
     safety feature that blocks lessecure apps. For this function to work properly, this needs to be turned off, which
     can be done at the following link: https://myaccount.google.com/lesssecureapps. 
     """
-    BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' % user,'Subject: %s' % subject,'', message])
-    smtpObj = smtplib.SMTP('smtp.gmail.com', port)
-    smtpObj.ehlo()
-    smtpObj.starttls()
-    smtpObj.login(user, password)
-    smtpObj.sendmail(user, destination, BODY)
-    smtpObj.quit()
+    SendMail('smtp.gmail.com', user, password, destination, subject, message, port)
     return
 
 
 def SendMailWithYahoo(user, password, destination, subject="", message="", port=587):
     """
-    This function lest you send emails with a Yahoo address. The first and second arguments require the
+    This function lets you send emails with a Yahoo address. The first and second arguments require the
     mail address and password of your hotmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     """
-    BODY = '\r\n'.join(['To: %s' % destination, 'From: %s' % user,'Subject: %s' % subject,'', message])
-    smtpObj = smtplib.SMTP('smtp.mail.yahoo.com', port)
-    smtpObj.ehlo()
-    smtpObj.starttls()
-    smtpObj.login(user, password)
-    smtpObj.sendmail(user, destination, BODY)
-    smtpObj.quit()
+    SendMail('smtp.mail.yahoo.com', user, password, destination, subject, message, port)
     return
 
 
@@ -1323,35 +1322,37 @@ def OpenXPSViewer():
     subprocess.Popen("xpsrchvw")
     return    
 
-'''
-Portal activities
-'''
 
-def AutomagicaReport(data, headers=True, title=False):
-    '''
-    Function to report in the Automagica Portal. Can be used to generate reports, logs and worklists. Only available to users with access to the Portal. 
-    Only accepts lists of dictionaries as data.
-    :param bool input_type: Headers for report, if True will take dictionary keys or as header
-    '''   
-
+'''
+Portal (premium) activities
+'''
+def InsertReportTable(data):
+    """
+    Function to report in the Automagica Portal. Can be used to generate reports, 
+    logs and worklists. Only available to users with access to the Portal. 
+    This outputs a list of flat dicts to a markdown table with headers to the console.
+    """
     data_keys = []
+
     for row in data:
-        for key, value in row.items():
+        for key, _ in row.items():
             if key not in data_keys:
                 data_keys.append(key)
 
-    if title:
-        print('AUTOMAGICA_MARKDOWN: ##' + str(title))
+    header = '|'.join(data_keys)
 
-    if headers:
-        header = '|'.join(data_keys)
+    header_next = '|'.join(['---' for key in data_keys])
 
-        header_next = '|'.join(['---' for key in data_keys])
-
-        print('AUTOMAGICA_MARKDOWN: ' + str(header))
-        print('AUTOMAGICA_MARKDOWN: ' + str(header_next))
+    print('AUTOMAGICA_MARKDOWN: ' + str(header))
+    print('AUTOMAGICA_MARKDOWN: ' + str(header_next))
 
     for item in data:
         print('AUTOMAGICA_MARKDOWN: ' + '|'.join([str(item.get(key,'')) for key in data_keys]))
 
-    return
+def InsertReportTitle(title=None, level=1):
+    """
+    Function to insert a report title in the Automagica Portal.
+    This outputs a string as a title to the console.
+    """
+    print('AUTOMAGICA_MARKDOWN: '+ '#' * level)
+
