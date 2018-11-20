@@ -1194,8 +1194,8 @@ import smtplib
 
 def SendMail(host, user, password, destination, subject="", message="", port=587):
     '''
-    This function lets you send emails with a hotmail address. The first and second arguments require the
-    mail address and password of your hotmail account. The destination is the receiving mail address. The subject
+    This function lets you send emails with an e-mail address. The first and second arguments require the
+    mail address and password of your e-mail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     '''
@@ -1223,7 +1223,7 @@ def SendMailWithHotmail(user, password, destination, subject="", message="", por
 def SendMailWithGmail(user, password, destination, subject="", message="", port=587):
     '''
     This function lets you send emails with a gmail address. The first and second arguments require the
-    mail address and password of your hotmail account. The destination is the receiving mail address. The subject
+    mail address and password of your gmail account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465. Google has a 
     safety feature that blocks lessecure apps. For this function to work properly, this needs to be turned off, which
@@ -1236,7 +1236,7 @@ def SendMailWithGmail(user, password, destination, subject="", message="", port=
 def SendMailWithYahoo(user, password, destination, subject="", message="", port=587):
     '''
     This function lets you send emails with a Yahoo address. The first and second arguments require the
-    mail address and password of your hotmail account. The destination is the receiving mail address. The subject
+    mail address and password of your Yahoo account. The destination is the receiving mail address. The subject
     and message variables contain respectively the mail subject and the text in the mail. The port variable is standard
     587. In most cases this argument can be ignored, but in some cases it needs to be changed to 465.
     '''
