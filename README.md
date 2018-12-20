@@ -53,7 +53,7 @@ This is a simple example that opens Notepad and types 'Hello world!'.
 PressHotkey('win','r')
 Wait(seconds=1)
 Type(text='notepad', interval_seconds=0)
-PressHotkey('enter')
+PressKey('enter')
 Wait(seconds=2)
 Type(text='Hello world!', interval_seconds=0.15)
 ```
